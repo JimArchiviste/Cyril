@@ -4,26 +4,41 @@ $( document ).ready(function() {
 	p.html("Please select an option to sort :");
 
 	var form = jQuery("<form/>", {id : 'form'}).appendTo(p);
-	var mbti = jQuery("<input/>", {type: 'radio', value: 'mbti', checked: 'true'}).appendTo(form);
+	var mbti = jQuery("<input/>", {type: 'radio', value: 'mbti'}).appendTo(form);
 	form.append("mbti");
 	var origin = jQuery("<input/>", {type: 'radio', value: 'origin'}).appendTo(form);
 	form.append("origin");
+	if ($.cookie('pref') === "origin")
+	{
+		origin.prop('checked', true);
+	}
+	else
+	{
+		mbti.prop('checked', true);
+	}
 	p.append("<br>");
 	var main = jQuery("<div>").appendTo(p);
 
 	$.getJSON( "old.json", function( data ) {
-		displayMBTI(data);
+		if ($.cookie('pref') === "origin") {
+			displayUnivers(data);
+		}
+		else {
+			displayMBTI(data);
+		}
 		origin.on("click", function(e) {
 			if (!mbti.is(':checked')) return;
 			mbti.removeAttr("checked");
 			main.html("");
 			displayUnivers(data);
+			$.cookie('pref', 'origin');
 		});
 		mbti.on("click", function(e) {
 			if (!origin.is(':checked')) return;
 			origin.removeAttr("checked");
 			main.html("");
 			displayMBTI(data);
+			$.cookie('pref', 'mbti');
 		});
 	});
 
