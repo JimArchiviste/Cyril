@@ -36,10 +36,26 @@ $( document ).ready(function() {
 		main.append(current_div);
 		main.append("<br />");
 		var tableau = jQuery("<table>");
+		var ligne = jQuery("<tr>");
+		var nom = jQuery("<td>", {class: 'monster'});
+		var origin = jQuery("<td>", {class: 'monster'});
+		nom.html("Nom");
+		origin.html("Origine"); //afficher origine
+		ligne.append(nom);
+		ligne.append(origin);
+		tableau.append(ligne);
                 for (var i = 0; i < length; i++) {
 			if (current !== data[test[i]][1]){
 				main.append(tableau);
 				tableau = jQuery("<table>");
+				ligne = jQuery("<tr>");
+				nom = jQuery("<td>", {class: 'monster'});
+				origin = jQuery("<td>", {class: 'monster'});
+				nom.html("Nom");
+				origin.html("Origine"); //afficher origine
+				ligne.append(nom);
+				ligne.append(origin);
+				tableau.append(ligne);
 				current = data[test[i]][1];
 				current_div = jQuery("<div>", {class: 'title'});
 				current_div.html(current);
@@ -47,9 +63,9 @@ $( document ).ready(function() {
 				main.append(current_div);
 				main.append("<br />");
 			}
-			var ligne = jQuery("<tr>");
-			var nom = jQuery("<td>");
-			var origin = jQuery("<td>");
+			ligne = jQuery("<tr>");
+			nom = jQuery("<td>");
+			origin = jQuery("<td>");
 			nom.html(test[i]);
 			origin.html(data[test[i]][0]); //afficher origine
 			ligne.append(nom);
@@ -67,10 +83,26 @@ $( document ).ready(function() {
 		main.append(current_div);
 		main.append("<br />");
 		var tableau = jQuery("<table>");
+		var ligne = jQuery("<tr>");
+		var nom = jQuery("<td>", {class: 'monster'});
+		var origin = jQuery("<td>", {class: 'monster'});
+		nom.html("Nom");
+		origin.html("MBTI"); //afficher mbti
+		ligne.append(nom);
+		ligne.append(origin);
+		tableau.append(ligne);
                 for (var i = 0; i < length; i++) {
 			if (current !== data[test[i]][0]){
 				main.append(tableau);
 				tableau = jQuery("<table>");
+				ligne = jQuery("<tr>");
+				nom = jQuery("<td>", {class: 'monster'});
+				origin = jQuery("<td>", {class: 'monster'});
+				nom.html("Nom");
+				origin.html("MBTI"); //afficher MBTI
+				ligne.append(nom);
+				ligne.append(origin);
+				tableau.append(ligne);
 				current = data[test[i]][0];
 				current_div = jQuery("<div>", {class: 'title'});
 				current_div.html(current);
@@ -78,9 +110,9 @@ $( document ).ready(function() {
 				main.append(current_div);
 				main.append("<br />");
 			}
-			var ligne = jQuery("<tr>");
-			var nom = jQuery("<td>");
-			var origin = jQuery("<td>");
+			ligne = jQuery("<tr>");
+			nom = jQuery("<td>");
+			origin = jQuery("<td>");
 			nom.html(test[i]);
 			origin.html(data[test[i]][1]); //afficher mbti
 			ligne.append(nom);
