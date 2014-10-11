@@ -46,7 +46,6 @@ $( document ).ready(function() {
 		tableau.append(ligne);
                 for (var i = 0; i < length; i++) {
 			if (current !== data[test[i]][1]){
-				main.append(tableau);
 				tableau = jQuery("<table>");
 				ligne = jQuery("<tr>");
 				nom = jQuery("<td>", {class: 'monster'});
@@ -71,6 +70,7 @@ $( document ).ready(function() {
 			ligne.append(nom);
 			ligne.append(origin);
 			tableau.append(ligne);
+			if(i === length - 1 || data[test[i]][1] !== data[test[i+1]][1]) main.append(tableau);
                 }
 	}
 
@@ -93,7 +93,6 @@ $( document ).ready(function() {
 		tableau.append(ligne);
                 for (var i = 0; i < length; i++) {
 			if (current !== data[test[i]][0]){
-				main.append(tableau);
 				tableau = jQuery("<table>");
 				ligne = jQuery("<tr>");
 				nom = jQuery("<td>", {class: 'monster'});
@@ -118,12 +117,12 @@ $( document ).ready(function() {
 			ligne.append(nom);
 			ligne.append(origin);
 			tableau.append(ligne);
+			if(i === length - 1 || data[test[i]][0] !== data[test[i+1]][0]) main.append(tableau);
                 }
 	}
 
 	function sortByMBTI (data) {
 		var keys = [];
-		var mbti = [];
 		Object.keys(data)
 			.map(function (k) { return [k, data[k]]; })
 			.sort(function (a, b) {
@@ -149,7 +148,6 @@ $( document ).ready(function() {
 			})
 			.forEach(function (d) {
 				 keys.push(d[0]);
-				 console.log(d[1]);
 		});
 		return keys;
 	}
